@@ -28,8 +28,8 @@ const checkId = (request, response, next) => {
 
 
 app.post('/order', (request, response) => {
-    const { order, clientName, price } = request.body
-    let client = { id: uuid.v4(), order, clientName, price, status: "Em preparação" }
+    const { order, name, price } = request.body
+    let client = { id: uuid.v4(), order, name, price, status: "Em preparação" }
 
     orders.push(client)
 
@@ -42,11 +42,11 @@ app.get('/order', (request, response) => {
 
 app.put('/order/:id', checkId, (request, response) => {
 
-    const { order, clientName, price } = request.body
+    const { order, name, price } = request.body
     const index = request.userIndex
     const id = request.userId
 
-    const updateClient = { id, order, clientName, price }
+    const updateClient = { id, order, name, price }
 
     orders[index] = updateClient
 
